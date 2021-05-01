@@ -1,0 +1,24 @@
+{% extends "customer/baseaccountpage.html" %}
+{% load i18n %}
+
+{% block tabcontent %}
+    {% if emails %}
+    <h3>Emails</h3>
+    <div class="table-responsive">
+        <table>
+            <tbody>
+                {% for email in emails %}
+                    <tr>
+                        <td>
+                            <a href="{% url 'customer:email-detail' email_id=email.id %}">{{ email.subject }}</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+        {% include "partials/pagination.html" %}
+    {% else %}
+        <p>{% trans 'No emails found' %}</p>
+    {% endif %}
+{% endblock tabcontent %}

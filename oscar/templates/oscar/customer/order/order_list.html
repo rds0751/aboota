@@ -1,0 +1,43 @@
+{% extends "customer/baseaccountpage.html" %}
+{% load i18n %}
+{% load currency_filters %}
+{% load staticfiles %}
+
+{% block tabcontent %}
+
+{% if orders %}
+<h2>{{ form.description }}</h2>
+<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-4-tablet">
+    <div   style="padding: 32px 0px;" class="mdc-card bg-white">
+        <div class="table-responsive">
+            <table style="text-align: left !important;">
+                <thead>
+                    <tr>
+                        <th>{% trans "Order No." %}</th>
+                        <th>{% trans "Total" %}</th>
+                        <th>{% trans "Date" %}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for order in orders %}
+                    <tr>
+                        <td><a href="{% url 'customer:order' order_number=order.number %}">{{ order.number }}</a></td>
+                        <td>{{ order.total_incl_tax|currency:order.currency }}</td>
+                        <td>{{ order.date_placed|date:"M d, Y" }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% include "partials/pagination.html" %}
+{% else %}
+{% if form.is_bound %}
+<p>{% trans "No orders match your search." %}</p>
+{% else %}
+<p>{% trans "You haven't placed any orders." %}</p>
+{% endif %}
+{% endif %}
+
+{% endblock tabcontent %}

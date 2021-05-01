@@ -1,0 +1,22 @@
+{% load basket_tags %}
+{% load i18n %}
+{% load purchase_info_tags %}
+
+{% purchase_info_for_product request product as session %}
+
+{% if session.availability.is_available_to_buy %}
+    {% basket_form request product 'single' as basket_form %}
+    <form action="{% url 'basket:add' pk=product.pk %}" method="post">
+        {% csrf_token %}
+        {{ basket_form.as_p }}
+        <button type="submit" style="background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;"><img style="width: 70%" src="https://jrindiastatic.s3.amazonaws.com/media/public/images/promotions/580b57fcd9996e24bc43c462.png"></button>
+    </form>
+{% else %}
+    <span class="btn btn-default btn-block disabled">{% trans "Buy Now" %}</span>
+{% endif %}

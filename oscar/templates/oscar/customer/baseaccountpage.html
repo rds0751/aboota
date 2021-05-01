@@ -1,0 +1,56 @@
+{% extends "users/base.html" %}
+
+{% load i18n %}
+
+{% block title %}
+{{ page_title }} | {% trans 'Account' %} | {{ block.super }}
+{% endblock %}
+
+{% block body_class %}account-profile{% endblock %}
+
+{% block breadcrumbs %}
+<ul class="breadcrumb">
+    <li>
+        <a href="{{ homepage_url }}">{% trans 'Home' %}</a>
+    </li>
+    <li>
+        <a href="{% url 'customer:summary' %}">{% trans 'Account' %}</a>
+    </li>
+    {% block extra_breadcrumbs %}{% endblock %}
+    <li class="active">{{ page_title }}</li>
+</ul>
+{% endblock %}
+
+{% block headertext %}{{ page_title }}{% endblock %}
+
+
+
+{% block content %}
+<div class="body-wrapper">
+    <div class="main-wrapper">
+        <div class="page-wrapper full-page-wrapper">
+            <main>
+                <div>
+                    <div class="mdc-layout-grid__inner">
+                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+                            <div class="mdc-card p-0">
+                                <section style="padding: 30px 30px 20px 30px;" class="error-header">
+                                    <h1 style="color: white;">JR Shopping Account</h1>
+                                    <p>{{ page_title }}</p>
+                                </section>
+                                <section>
+                                    <div class="mdc-layout-grid__cell--span-12 mdc-layout-grid__cell--span-6-desktop stretch-card">
+                                        <div class="mdc-card">
+                                            {% block tabcontent %}{% endblock tabcontent %}
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+</div>
+{% endblock content %}

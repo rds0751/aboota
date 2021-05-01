@@ -1,0 +1,138 @@
+{% load i18n %} 
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE|default:"en-gb" }}" class="no-js">
+    <head>
+        <!-- Meta -->
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale={% if request.user.is_staff %}0{% else %}1{% endif %}, maximum-scale=1, user-scalable=yes" />
+
+        <!-- Document title -->
+        <title>Dashboard | JR India</title>
+
+        <meta name="description" content="JR India - Admin Dashboard" />
+        <meta name="author" content="rds0751" />
+        <meta name="robots" content="noindex, nofollow" />
+
+        <!-- Favicons -->
+        <link rel="apple-touch-icon" href="{% static 'appUI/img/favicons/apple-touch-icon.png' %}" />
+        <link rel="icon" href="{% static 'appUI/img/favicons/favicon.ico' %}" />
+
+        <!-- Google fonts -->
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,900%7CRoboto+Slab:300,400%7CRoboto+Mono:400" />
+
+        <!-- Page JS Plugins CSS -->
+        <link rel="stylesheet" href="{% static 'appUI/js/plugins/slick/slick.min.css' %}" />
+        <link rel="stylesheet" href="{% static 'appUI/js/plugins/slick/slick-theme.min.css' %}" />
+
+        <!-- AppUI CSS stylesheets -->
+        <link rel="stylesheet" id="css-font-awesome" href="{% static 'appUI/css/font-awesome.css' %}" />
+        <link rel="stylesheet" id="css-ionicons" href="{% static 'appUI/css/ionicons.css' %}" />
+        <link rel="stylesheet" id="css-bootstrap" href="{% static 'appUI/css/bootstrap.css' %}" />
+        <link rel="stylesheet" id="css-app" href="{% static 'appUI/css/app.css' %}" />
+        <link rel="stylesheet" id="css-app-custom" href="{% static 'appUI/css/app-custom.css' %}" />
+        <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+</script>
+        {% block favicon %}
+            <link rel="shortcut icon" href="{% static 'assets/images/favico.png' %}" />
+        {% endblock %}
+
+        {# Block where global CSS will go. #}
+        {% block styles %}{% endblock %}
+
+        {# Additional CSS - specific to certain pages #}
+        {% block extrastyles %}{% endblock %}
+
+        {% block head %}
+        {% endblock %}
+
+        {% block extrahead %}
+		    {{ block.super }}
+
+		    <meta name="robots" content="NONE,NOARCHIVE">
+		{% endblock %}
+
+        {% block tracking %}
+            {# Default to using Google analytics #}
+            {% include "partials/google_analytics.html" %}
+        {% endblock %}
+    </head>
+
+    <body class="app-ui layout-has-drawer layout-has-fixed-header">
+        <amp-auto-ads type="adsense"
+        data-ad-client="ca-pub-2476399156226109">
+</amp-auto-ads>
+      {% if not '/tickets/' in request.get_full_path %}
+		{% if user.is_authenticated %}
+        <div class="app-layout-canvas">
+		    <div class="app-layout-container">
+		        {% include 'panel/partials/nav.html' %}
+              {% endif %}
+		    </div>
+		</div>
+		<main class="app-layout-content">
+        {% endif %}
+
+            <!-- Page Content -->
+            <div style="padding: 0" class="container-fluid p-y-md">
+		        {# Main content goes in this 'layout' block #}
+		        {% block layout %}{% endblock %}
+		    </div>
+        {% if not '/tickets/' in request.get_full_path %}
+		</main>
+        {% endif %}
+
+        {# Scripts loaded from a CDN. #}
+        {% block cdn_scripts %}
+            <!-- jQuery -->
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+            <script>window.jQuery || document.write('<script src="{% static "oscar/js/jquery/jquery.min.js" %}"><\/script>')</script>
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- horizontal -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-2476399156226109"
+     data-ad-slot="6529490036"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+        {% endblock %}
+
+        {# Local scripts #}
+        {% block scripts %}
+        {% endblock %}
+
+        {# Additional JS scripts #}
+        {% block extrascripts %}{% endblock %}
+
+        {# Block for body onload functions #}
+        <script>
+            $(function() {
+                {% block onbodyload %}{% endblock %}
+            });
+        </script>
+        <!-- AppUI Core JS: jQuery, Bootstrap, slimScroll, scrollLock and App.js -->
+        <script src="{% static 'appUI/js/core/jquery.min.js' %}"></script>
+        <script src="{% static 'appUI/js/core/bootstrap.min.js' %}"></script>
+        <script src="{% static 'appUI/js/core/jquery.slimscroll.min.js' %}"></script>
+        <script src="{% static 'appUI/js/core/jquery.scrollLock.min.js' %}"></script>
+        <script src="{% static 'appUI/js/core/jquery.placeholder.min.js' %}"></script>
+        <script src="{% static 'appUI/js/app.js' %}"></script>
+        <script src="{% static 'appUI/js/app-custom.js' %}"></script>
+        <script data-ad-client="ca-pub-2476399156226109" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+        <!-- Page Plugins -->
+        <script src="{% static 'appUI/js/plugins/slick/slick.min.js' %}"></script>
+        <script src="{% static 'appUI/js/plugins/chartjs/Chart.min.js' %}"></script>
+        <script src="{% static 'appUI/js/plugins/flot/jquery.flot.min.js' %}"></script>
+        <script src="{% static 'appUI/js/plugins/flot/jquery.flot.pie.min.js' %}"></script>
+        <script src="{% static 'appUI/js/plugins/flot/jquery.flot.stack.min.js' %}"></script>
+        <script src="{% static 'appUI/js/plugins/flot/jquery.flot.resize.min.js' %}"></script>
+
+        {# Page meta-data - this is populated by the 'metadata' template context processor #}
+    </body>
+</html>

@@ -1,0 +1,68 @@
+{% extends "customer/baseaccountpage.html" %}
+{% load i18n %} 
+
+{% block tabcontent %}
+
+{% if addresses %}
+<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-4-tablet">
+    <div   style="padding: 32px 0px;" class="mdc-card bg-white">
+        <h3>Addresses</h3>
+        <div class="table-responsive">
+            <table style="text-align: justify !important;">
+                <tbody>
+                    {% for address in addresses %}
+                    <tr>
+                        <td style="padding-bottom: 20px;">
+                            {% if address.is_default_for_shipping %}
+                            <span class="label label-success">{% trans 'Default shipping address' %}</span>
+                            {% endif %}
+                            {% if address.is_default_for_billing %}
+                            <span class="label label-info">{% trans 'Default billing address' %}</span>
+                            {% endif %}
+                        <address>
+                                {% for field in address.active_address_fields %}
+                            {{ field }},
+                            {% endfor %}
+                        </address>
+                        <div class="mdc-select demo-width-class" data-mdc-auto-init="MDCSelect">
+                          <input type="hidden" name="enhanced-select">
+                          <i class="mdc-select__dropdown-icon"></i>
+                          <div class="mdc-select__selected-text"></div>
+                          <div class="mdc-select__menu mdc-menu-surface demo-width-class">
+                            <ul class="mdc-list">
+                            <li class="mdc-list-item mdc-list-item--selected" aria-selected="true"></li>
+                            <li class="mdc-list-item" data-value="grains">
+                                <a href="{% url 'customer:address-delete' pk=address.id %}">
+                                    {% trans 'Delete' %}
+                                </a>
+                            </li>
+                            <li class="mdc-list-item" data-value="vegetables">
+                                <a href="{% url 'customer:address-change-status' pk=address.id action='default_for_shipping' %}">
+                                    {% trans 'Set default shipping' %}
+                                </a>
+                            </li>
+                            <li class="mdc-list-item" data-value="fruit">
+                                <a href="{% url 'customer:address-change-status' pk=address.id action='default_for_billing' %}">
+                                    {% trans 'Set default billing' %}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <span class="mdc-floating-label">Action</span>
+                    <div class="mdc-line-ripple"></div>
+                </div>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+<a href="{% url 'customer:address-create' %}" class="mdc-button mdc-button--raised w-100">{% trans 'Add a new address' %}</a>
+</div>
+</div>
+{% include "partials/pagination.html" %}
+{% else %}
+<p>{% trans 'There are no addresses in your address book.' %}</p>
+{% endif %}
+{% endblock tabcontent %}
+

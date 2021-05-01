@@ -1,0 +1,18 @@
+{% extends "customer/baseaccountpage.html" %}
+{% load i18n %}
+
+{% block tabcontent %}
+<div class="table-responsive">
+    <table>
+        <tr>
+            <td>Date: {{ email.date_sent }}</td>
+        </tr>
+        <tr>
+            <td>Subject: {{ email.subject }}</td>
+        </tr>
+        <tr>
+            <td>{{ email.body_html|safe }}</td>
+        </tr>
+    </table>
+    </div>
+{% endblock tabcontent %}

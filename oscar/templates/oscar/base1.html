@@ -1,0 +1,80 @@
+{% load i18n %} 
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE|default:"en-gb" }}" class="no-js">
+    <head>
+        <title>{% block title %}JR India - Shopping{% endblock %}</title>
+
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <meta name="created" content="{% now "jS M Y h:i" %}" />
+        <meta name="description" content="{% block description %}{% endblock %}" />
+        <meta name="viewport" content="{% block viewport %}width=device-width{% endblock %}" />
+        <meta name="robots" content="NOARCHIVE,NOCACHE" />
+        <script id="bolt" src="https://checkout-static.citruspay.com/bolt/run/bolt.min.js" bolt-color="<color-
+code>"
+bolt-logo="<image path>"></script>
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+</script>
+        {% block favicon %}
+            <link rel="shortcut icon" href="{% static 'assets/images/favico.png' %}" />
+        {% endblock %}
+
+        {# Block where global CSS will go. #}
+        {% block styles %}{% endblock %}
+
+        {# Additional CSS - specific to certain pages #}
+        {% block extrastyles %}{% endblock %}
+
+        {% block extrahead %}{% endblock %}
+
+        {% block tracking %}
+            {# Default to using Google analytics #}
+            {% include "partials/google_analytics.html" %}
+        {% endblock %}
+    </head>
+
+    <body style="font-family: 'Poppins', sans-serif !important;" id="{% block body_id %}default{% endblock %}" class="{% block body_class %}default{% endblock %}">
+        <amp-auto-ads type="adsense"
+        data-ad-client="ca-pub-2476399156226109">
+</amp-auto-ads>
+        {# Main content goes in this 'layout' block #}
+        {% block layout %}{% endblock %}
+
+        {# Scripts loaded from a CDN. #}
+        {% block cdn_scripts %}
+            <!-- jQuery -->
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+            <script>window.jQuery || document.write('<script src="{% static "oscar/js/jquery/jquery.min.js" %}"><\/script>')</script>
+        {% endblock %}
+
+        {# Local scripts #}
+        {% block scripts %}
+        {% endblock %}
+
+        {# Additional JS scripts #}
+        {% block extrascripts %}{% endblock %}
+
+        {# Block for body onload functions #}
+        <script>
+            $(function() {
+                {% block onbodyload %}{% endblock %}
+            });
+        </script>
+        <script data-ad-client="ca-pub-2476399156226109" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- horizontal -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-2476399156226109"
+     data-ad-slot="6529490036"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+
+        {# Page meta-data - this is populated by the 'metadata' template context processor #}
+    </body>
+</html>
