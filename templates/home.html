@@ -150,8 +150,8 @@
                                             <h1>Aboota Loggedin</h1>
                                             <p>Welcome, {{ user.username }} !</p>
                                             <img style="border-radius: 50%" src="{{ user.socialaccount_set.all.0.get_avatar_url }}">
-                                            <br>
-                                            <a href="/accounts/logout/">Logout</a>
+                                            <br><br><br>
+                                            <a style="color: blue" href="/accounts/logout/">Logout</a>
                                           {% endif %}
                                         </div>
                                         <!-- .card-block -->
