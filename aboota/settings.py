@@ -97,16 +97,18 @@ WSGI_APPLICATION = 'aboota.wsgi.application'
 
 AUTH_USER_MODEL = "users.User"
 
+LOGIN_URL = '/'
+
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
+import dj_database_url
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
+    'default': dj_database_url.config(
+        default='postgres://dbmasteruser:pb2d80740f512c8cb41341e3291ed05b6b3d480a@ls-25063e7cab8d89b27b405a410b674ed1c63c1599.cz4lglmvud83.ap-south-1.rds.amazonaws.com:5432/postgres',
+        conn_max_age=600)}
 
+    
 HAYSTACK_CONNECTIONS = {
     'default': {
         'ENGINE': 'haystack.backends.simple_backend.SimpleEngine',
