@@ -1,6 +1,7 @@
 window.addEventListener('DOMContentLoaded', function(event) {
   console.log('DOM fully loaded and parsed');
   websdkready();
+  setTimeout(() => { customise(); }, 10000);
 });
 
 function websdkready() {
@@ -105,4 +106,10 @@ function websdkready() {
   }
 
   beginJoin(meetingConfig.signature);
+};
+
+function customise() {
+  console.log('-----------------------------------------------')
+  var x = document.getElementsByClassName("join-audio-by-voip");
+  x.innerHTML += '<p style="color: white;">Hello</p>';
 };
