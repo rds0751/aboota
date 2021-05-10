@@ -1,7 +1,7 @@
 window.addEventListener('DOMContentLoaded', function(event) {
   console.log('DOM fully loaded and parsed');
   websdkready();
-  setTimeout(() => { customise(); }, 10000);
+  setTimeout(() => { customise(); }, 5000);
 });
 
 function websdkready() {
@@ -20,9 +20,9 @@ function websdkready() {
         }
       }
       return (
-        "CDN#" +
+        "Block is the main frame that is here in the meeting" +
         tmpArgs.version +
-        "#" +
+        "Hello World!" +
         testTool.detectOS() +
         "#" +
         testTool.getBrowserInfo()
@@ -109,7 +109,6 @@ function websdkready() {
 };
 
 function customise() {
-  console.log('-----------------------------------------------')
-  var x = document.getElementsByClassName("join-audio-by-voip");
-  x.innerHTML += '<p style="color: white;">Hello</p>';
+  console.log('-----------------------------------------------');
+  document.getElementById("voip-tab").innerHTML += '<p style="color: white; text-align: center;">Hello</p>';
 };
