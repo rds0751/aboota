@@ -7,4 +7,5 @@ def index(request):
 
 @login_required
 def join(request):
-	return render(request, 'meeting/meeting.html', {})
+	link = request.POST.get('link')
+	return render(request, 'meeting/meeting.html', {'link': link})

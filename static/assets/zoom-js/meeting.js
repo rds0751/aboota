@@ -1,7 +1,7 @@
 window.addEventListener('DOMContentLoaded', function(event) {
   console.log('DOM fully loaded and parsed');
   websdkready();
-  setTimeout(() => { customise(); }, 5000);
+  setTimeout(() => { customise(); }, 10000);
 });
 
 function websdkready() {
@@ -110,5 +110,5 @@ function websdkready() {
 
 function customise() {
   console.log('-----------------------------------------------');
-  document.getElementById("voip-tab").innerHTML += '<p style="color: white; text-align: center;">Hello</p>';
+  document.getElementById("voip-tab").innerHTML += '<p style="color: white; text-align: center;">Facing audio issues?</p><br><a href="{{link}}">Click Here</a>';
 };

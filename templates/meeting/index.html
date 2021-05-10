@@ -64,7 +64,7 @@
     <nav id="nav-tool" class="navbar navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#">Powereds by Aboota Academy.</a>
+                <a class="navbar-brand" href="#">Aboota Academy of Forex Powered By Dibort Markets</a>
             </div>
             <br><br><br>
             <div>
@@ -73,6 +73,9 @@
                     We are delighted to anounce that Aboota academy of forex powered by Dibort Markets, is coming up with its new course on Forex in hindi/urdu. Stay tuned for latest updates on this Zero to Hero course.
 
                 </p>
+                <img style="border-radius: 50%" src="{{ user.socialaccount_set.all.0.get_avatar_url }}">
+                <br><br><br>
+                <a style="color: blue" href="/accounts/logout/">Logout</a>
             </div>
             <div>
                 <form id="meeting_form" style="text-align: -webkit-center;">
@@ -125,7 +128,7 @@
 
                     <!-- <div style="height: 250px; width: 250px; background: red"></div> -->
 
-                    <input type="hidden" value="" id="copy_link_value" />
+                    <input type="hidden" value="" id="copy_link_value" name='link' />
                     <button type="submit" class="btn btn-primary" id="join_meeting">Join</button>
                     <button type="submit" style="display: none" class="btn btn-primary" id="clear_all">Clear</button>
                     <button type="button" style="display: none" link="" onclick="window.copyJoinLink('#copy_join_link')"
