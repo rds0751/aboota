@@ -68,12 +68,12 @@
             </div>
             <br><br><br>
             <div>
+                <img style="border-radius: 50%" src="{{ user.socialaccount_set.all.0.get_avatar_url }}">
                 <p>
                     Dear {{ request.user.first_name }} {{ request.user.last }},<br>
                     We are delighted to anounce that Aboota academy of forex powered by Dibort Markets, is coming up with its new course on Forex in hindi/urdu. Stay tuned for latest updates on this Zero to Hero course.<br>Please click join to enter the meeting.
 
                 </p>
-                <img style="border-radius: 50%" src="{{ user.socialaccount_set.all.0.get_avatar_url }}">
             </div>
             <div>
                 <form id="meeting_form" style="text-align: -webkit-center;">
