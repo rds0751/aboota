@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 
 <head>
-    <title>Aboota Academy</title>
+    <title>Aboota Education</title>
     <meta charset="utf-8" />
     <link type="text/css" rel="stylesheet" href="https://source.zoom.us/1.9.1/css/bootstrap.css" />
     <link type="text/css" rel="stylesheet" href="https://source.zoom.us/1.9.1/css/react-select.css" />
@@ -64,28 +64,28 @@
     <nav id="nav-tool" class="navbar navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#">Aboota Academy of Forex Powered By Dibort Markets</a>
+                <a class="navbar-brand" href="#">Aboota Education of Forex Powered By Dibort Markets</a>
             </div>
             <br><br><br>
             <div>
                 <img style="border-radius: 50%" src="{{ user.socialaccount_set.all.0.get_avatar_url }}">
                 <p>
                     Dear {{ request.user.first_name }} {{ request.user.last }},<br>
-                    We are delighted to anounce that Aboota academy of forex powered by Dibort Markets, is coming up with its new course on Forex in hindi/urdu. Stay tuned for latest updates on this Zero to Hero course.<br>Please click join to enter the meeting.
+                    We are delighted to anounce that Aboota Education of forex powered by Dibort Markets, is coming up with its new course on Forex in hindi/urdu. Stay tuned for latest updates on this Zero to Hero course.<br>Please click join to host the meeting.
 
                 </p>
             </div>
             <div>
                 <form id="meeting_form" style="text-align: -webkit-center;">
                     <div class="form-group">
-                        <input type="hidden" name="display_name" id="display_name" value="{{ request.user.first_name }} {{ request.user.last_name }}!" maxLength="100"
+                        <input type="hidden" name="display_name" id="display_name" value="{{ request.user.first_name }} {{ request.user.last_name }}" maxLength="100"
                             placeholder="Name" class="form-control" required>
                     </div>
                     <div class="form-group">
-                        <input type="hidden" name="meeting_number" id="meeting_number" value="3585741740" maxLength="200" style="width:150px" placeholder="Meeting Number" class="form-control" required>
+                        <input type="hidden" name="meeting_number" id="meeting_number" value="83484501433" maxLength="200" style="width:150px" placeholder="Meeting Number" class="form-control" required>
                     </div>
                     <div class="form-group">
-                        <input type="hidden" name="meeting_pwd" id="meeting_pwd" value="1234" style="width:150px"
+                        <input type="hidden" name="meeting_pwd" id="meeting_pwd" value="2021" style="width:150px"
                             maxLength="32" placeholder="Meeting Password" class="form-control">
                     </div>
                     <div class="form-group">
@@ -94,10 +94,10 @@
                     </div>
 
                     
-                    <div {% if not request.user.is_staff %}style="display: none"{% endif %} class="form-group">
-                        <select id="meeting_role" class="sdk-select">
-                            <option selected value=0>Attendee</option>
-                            <option value=1>Host</option>
+                    <div class="form-group">
+                        <select style="display: none" id="meeting_role" class="sdk-select">
+                            <option value=0>Attendee</option>
+                            <option selected value=1>Host</option>
                             <option value=5>Assistant</option>
                         </select>
                     </div>
